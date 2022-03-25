@@ -37,5 +37,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.helloworld.Main'
+    mainClass = 'com.javafxvalidation.demo.Main'
 }
