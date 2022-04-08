@@ -3,9 +3,7 @@
  */
 package com.javafxvalidation.demo;
 
-import com.javafxvalidation.form.ValidateableTextFieldBox;
-import com.javafxvalidation.validators.MinLengthValidator;
-import com.javafxvalidation.validators.NotEmptyValidator;
+import com.javafxvalidation.views.CreateOfferView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -27,11 +25,6 @@ public class JavaFXApplication extends Application {
     }
     
     private void initialize() {
-        var box1 = new ValidateableTextFieldBox(new NotEmptyValidator(), new MinLengthValidator(3));
-        box1.setMaxWidth(300);
-        var box2 = new ValidateableTextFieldBox(new NotEmptyValidator(), new MinLengthValidator(5));
-        box2.setMaxWidth(300);
-        
-        root.getChildren().addAll(box1, box2);
+        root.getChildren().add(new CreateOfferView());
     }
 }

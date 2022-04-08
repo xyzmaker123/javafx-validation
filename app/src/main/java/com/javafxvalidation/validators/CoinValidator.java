@@ -1,13 +1,14 @@
 package com.javafxvalidation.validators;
 
 import com.javafxvalidation.core.Validator;
+import com.javafxvalidation.utils.CoinUtils;
 
-public class NotEmptyValidator implements Validator {
-    public static String CODE = "NotEmpty";
+public class CoinValidator implements Validator {
+    public static String CODE = "Coin";
     
     @Override
     public boolean validate(String text) {
-        return text != null && !text.isEmpty();
+        return CoinUtils.isValidCoin(text);
     }
 
     @Override

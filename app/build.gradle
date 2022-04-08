@@ -33,6 +33,7 @@ dependencies {
     implementation("com.google.inject:guice:5.0.1") {
         exclude(module: 'guava')
     }
+    implementation 'org.bitcoinj:bitcoinj-core:0.16.1'
 }
 
 application {

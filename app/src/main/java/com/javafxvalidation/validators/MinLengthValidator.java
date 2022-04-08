@@ -3,7 +3,8 @@ package com.javafxvalidation.validators;
 import com.javafxvalidation.core.Validator;
 
 public class MinLengthValidator implements Validator {
-
+    public static String CODE = "MinLength";
+    
     private int minLength;
     
     public MinLengthValidator(int minLength) {
@@ -17,7 +18,7 @@ public class MinLengthValidator implements Validator {
 
     @Override
     public String getCode() {
-        return "MinLength";
+        return CODE;
     }
 
 

@@ -1,53 +1,113 @@
 package com.javafxvalidation.form;
 
 import com.javafxvalidation.core.Validator;
+import com.javafxvalidation.utils.ValidationUtils;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ValidateableTextFieldBox extends VBox {
+    private final DisplayErrorStrategy displayErrorStrategy = DisplayErrorStrategy.ON_BLUR;
+    
     private final TextField input;
     private final Label errorInfo;
-    private final List<String> errors = new ArrayList<>();
-    private final List<Validator> validators = new ArrayList<>();
     
-    private Map<String, String> MESSAGES = new HashMap<>() {{
-        put("NotEmpty", "This field cannot be empty");
-        put("MinLength", "Value too short"); // TODO: setup minLength parameter
-    }};
+    private final BooleanProperty touchedProperty = new SimpleBooleanProperty(false);
+    private final ObservableList<String> errors = FXCollections.observableArrayList();
 
-    public ValidateableTextFieldBox(Validator ...validators) {
+    public ValidateableTextFieldBox(Builder builder) {
         super();
+        setMaxWidth(300);
         input = new TextField();
         errorInfo = new Label();
-        errorInfo.setVisible(false);
         
-        getChildren().add(input);
-        getChildren().add(errorInfo);
+        getChildren().addAll(
+                new Label(builder.label),
+                input, 
+                errorInfo
+        );
 
-        this.validators.addAll(Arrays.asList(validators));
+        validate(builder.validators);
         
-        input.focusedProperty().addListener((o, oldValue, newValue) -> {
-            if (oldValue && !newValue) {
-                validate();
+        input.textProperty().addListener((o, oldValue, focused) -> {
+            validate(builder.validators);
+        });
+        
+        input.focusedProperty().addListener((e, o, n) -> {
+            if (n && !touchedProperty.get()) {
+                touchedProperty.set(true);
             }
         });
+        
+        addBindings();
+    }
+
+    private void validate(List<Validator> validators) {
+        errors.setAll(
+                validators
+                        .stream()
+                        .filter(v -> !v.validate(input.getText()))
+                        .map(Validator::getCode)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    public StringProperty textProperty() {
+        return this.input.textProperty();
+    }
+
+    public boolean isValid() {
+        return errors.isEmpty();
     }
     
-    private void validate() {
-        errors.clear();
-        for (Validator validator : validators) {
-            if (!validator.validate(input.getText())) {
-                errors.add(validator.getCode());
-            }
+    private void addBindings() {
+        errorInfo.visibleProperty().bind(Bindings.createBooleanBinding(this::shouldDisplayErrorInfo, errors, input.focusedProperty()));
+        errorInfo.textProperty().bind(Bindings.createStringBinding(this::getErrorMessage, errors));
+    }
+
+    private boolean shouldDisplayErrorInfo() {
+        if (errors.isEmpty()) return false;
+        return 
+                displayErrorStrategy == DisplayErrorStrategy.IMMEDIATELY || 
+                        displayErrorStrategy == DisplayErrorStrategy.ON_BLUR && touchedProperty.get();
+        
+    }
+
+    private String getErrorMessage() {
+        return ValidationUtils.getErrorMessage(errors);
+    }
+
+    enum DisplayErrorStrategy {
+        IMMEDIATELY,
+        ON_BLUR
+    }
+
+    public static class Builder {
+        private final String label;
+        private final List<Validator> validators = new ArrayList<>();
+
+        public Builder(String label) {
+            this.label = label;
         }
-
-        boolean isValid = errors.size()  == 0;
-        String errorMessage = isValid ? null: MESSAGES.get(errors.get(0));
-
-        errorInfo.setVisible(!isValid);
-        errorInfo.setText(errorMessage);
+        
+        public Builder validator(Validator validator) {
+            this.validators.add(validator);
+            return this;
+        }
+        
+        public ValidateableTextFieldBox build() {
+            return new ValidateableTextFieldBox(this);
+    
+        }
     }
 }
