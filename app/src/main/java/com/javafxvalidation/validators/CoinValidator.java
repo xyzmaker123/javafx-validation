@@ -22,6 +22,6 @@ public class CoinValidator implements Validator {
     
     @Override
     public String getMessage() {
-        return "No valid number";
+        return "No valid coin";
     }
 }
