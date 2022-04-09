@@ -1,19 +1,27 @@
 package com.javafxvalidation.validators;
 
 import com.javafxvalidation.core.Validator;
+import com.javafxvalidation.utils.ValidationUtils;
 
 public class NotEmptyValidator implements Validator {
-    public static String CODE = "NotEmpty";
+    private static NotEmptyValidator instance;
+
+    public static NotEmptyValidator getInstance() {
+        if (instance == null) {
+            instance = new NotEmptyValidator();
+        }
+        return instance;
+    }
+
+    private NotEmptyValidator() {}
     
     @Override
     public boolean validate(String text) {
-        return text != null && !text.isEmpty();
+        return ValidationUtils.isNotEmpty(text);
     }
 
     @Override
-    public String getCode() {
-        return CODE;
+    public String getMessage() {
+        return "Cannot be empty";
     }
-
-
 }

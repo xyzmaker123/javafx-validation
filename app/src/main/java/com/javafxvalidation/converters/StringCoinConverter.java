@@ -1,6 +1,6 @@
 package com.javafxvalidation.converters;
 
-import com.javafxvalidation.utils.CoinUtils;
+import com.javafxvalidation.utils.ValidationUtils;
 import javafx.util.StringConverter;
 import org.bitcoinj.core.Coin;
 
@@ -12,6 +12,6 @@ public class StringCoinConverter extends StringConverter<Coin> {
 
     @Override
     public Coin fromString(String value) {
-        return CoinUtils.isValidCoin(value) ? Coin.parseCoin(value) : null;
+        return ValidationUtils.isValidCoin(value) ? Coin.parseCoin(value) : null;
     }
 }

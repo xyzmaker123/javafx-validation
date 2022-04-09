@@ -1,24 +1,27 @@
 package com.javafxvalidation.validators;
 
 import com.javafxvalidation.core.Validator;
+import com.javafxvalidation.utils.ValidationUtils;
 
 public class DoubleValidator implements Validator {
-    public static String CODE = "Double";
+    private static DoubleValidator instance;
+
+    public static DoubleValidator getInstance() {
+        if (instance == null) {
+            instance = new DoubleValidator();
+        }
+        return instance;
+    }
+
+    private DoubleValidator() {}
     
     @Override
     public boolean validate(String text) {
-        try {
-            Double.parseDouble(text);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        return ValidationUtils.isValidDouble(text);
     }
 
     @Override
-    public String getCode() {
-        return CODE;
+    public String getMessage() {
+        return "No valid coin";
     }
-
-
 }
