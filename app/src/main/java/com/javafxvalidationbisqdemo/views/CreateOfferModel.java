@@ -1,6 +1,6 @@
-package com.javafxvalidation.views;
+package com.javafxvalidationbisqdemo.views;
 
-import com.javafxvalidation.views.offer.Offer;
+import com.javafxvalidationbisqdemo.views.offer.Offer;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

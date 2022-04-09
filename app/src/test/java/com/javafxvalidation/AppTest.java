@@ -3,7 +3,7 @@
  */
 package com.javafxvalidation;
 
-import com.javafxvalidation.demo.JavaFXApplication;
+import com.javafxvalidationbisqdemo.JavaFXApplication;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

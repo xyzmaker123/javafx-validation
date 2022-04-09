@@ -1,4 +1,4 @@
-package com.javafxvalidation.views;
+package com.javafxvalidationbisqdemo.views;
 
 import com.javafxvalidation.converters.StringCoinConverter;
 import com.javafxvalidation.form.ValidateableTextFieldBox;

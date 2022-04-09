@@ -1,4 +1,4 @@
-package com.javafxvalidation.demo;
+package com.javafxvalidationbisqdemo;
 
 import javafx.application.Application;
 

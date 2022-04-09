@@ -1,6 +1,6 @@
 # JavaFX validation library (proof of concept)
 
-## To run project:
+## To run demo:
 ```
   ./gradlew run
 ```

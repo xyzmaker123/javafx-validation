@@ -1,4 +1,4 @@
-package com.javafxvalidation.views.offer;
+package com.javafxvalidationbisqdemo.views.offer;
 
 import org.bitcoinj.core.Coin;
 
