@@ -1,4 +1,4 @@
-package com.jfxvalidation.utils;
+package com.xyzmaker123.jfxvalidation.utils;
 
 import org.bitcoinj.core.Coin;
 

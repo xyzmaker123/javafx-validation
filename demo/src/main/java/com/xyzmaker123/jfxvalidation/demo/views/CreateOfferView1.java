@@ -1,12 +1,12 @@
-package com.jfxvalidation.demo.views;
+package com.xyzmaker123.jfxvalidation.demo.views;
 
-import com.jfxvalidation.controls.TextFieldWrapper;
-import com.jfxvalidation.converters.StringCoinConverter;
-import com.jfxvalidation.converters.StringNumberConverter;
-import com.jfxvalidation.utils.BindingUtils;
-import com.jfxvalidation.validators.CoinValidator;
-import com.jfxvalidation.validators.DoubleValidator;
-import com.jfxvalidation.validators.NotEmptyValidator;
+import com.xyzmaker123.jfxvalidation.controls.TextFieldWrapper;
+import com.xyzmaker123.jfxvalidation.converters.StringCoinConverter;
+import com.xyzmaker123.jfxvalidation.converters.StringNumberConverter;
+import com.xyzmaker123.jfxvalidation.utils.BindingUtils;
+import com.xyzmaker123.jfxvalidation.validators.CoinValidator;
+import com.xyzmaker123.jfxvalidation.validators.DoubleValidator;
+import com.xyzmaker123.jfxvalidation.validators.NotEmptyValidator;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;

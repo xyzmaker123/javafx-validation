@@ -1,6 +1,6 @@
-package com.jfxvalidation.converters;
+package com.xyzmaker123.jfxvalidation.converters;
 
-import com.jfxvalidation.utils.ValidationUtils;
+import com.xyzmaker123.jfxvalidation.utils.ValidationUtils;
 import javafx.util.StringConverter;
 
 public class StringNumberConverter extends StringConverter<Number> {

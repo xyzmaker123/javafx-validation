@@ -1,4 +1,4 @@
-package com.jfxvalidation.demo;
+package com.xyzmaker123.jfxvalidation.demo;
 
 import javafx.application.Application;
 

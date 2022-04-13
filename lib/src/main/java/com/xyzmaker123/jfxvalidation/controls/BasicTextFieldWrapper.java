@@ -1,4 +1,4 @@
-package com.jfxvalidation.controls;
+package com.xyzmaker123.jfxvalidation.controls;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;

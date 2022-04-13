@@ -1,6 +1,6 @@
-package com.jfxvalidation.utils;
+package com.xyzmaker123.jfxvalidation.utils;
 
-import com.jfxvalidation.core.Validator;
+import com.xyzmaker123.jfxvalidation.core.Validator;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.StringProperty;

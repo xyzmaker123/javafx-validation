@@ -1,7 +1,7 @@
-package com.jfxvalidation.validators;
+package com.xyzmaker123.jfxvalidation.validators;
 
-import com.jfxvalidation.core.Validator;
-import com.jfxvalidation.utils.ValidationUtils;
+import com.xyzmaker123.jfxvalidation.core.Validator;
+import com.xyzmaker123.jfxvalidation.utils.ValidationUtils;
 
 public class CoinValidator implements Validator {
     private static CoinValidator instance;

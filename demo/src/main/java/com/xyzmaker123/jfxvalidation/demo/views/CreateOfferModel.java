@@ -1,6 +1,6 @@
-package com.jfxvalidation.demo.views;
+package com.xyzmaker123.jfxvalidation.demo.views;
 
-import com.jfxvalidation.demo.views.offer.Offer;
+import com.xyzmaker123.jfxvalidation.demo.views.offer.Offer;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
