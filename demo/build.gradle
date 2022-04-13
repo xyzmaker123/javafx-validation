@@ -5,12 +5,11 @@ plugins {
 
 javafx {
     version = "16"
-    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
+    modules = [ 'javafx.base', 'javafx.controls', 'javafx.graphics' ]
 }
 
 repositories {
     mavenCentral()
-    maven { url "https://jitpack.io" }
     maven { url "https://plugins.gradle.org/m2/" }
 }
 
@@ -19,9 +18,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:30.1.1-jre'
+    implementation 'com.google.guava:guava:31.1-jre'
     implementation 'org.openjfx:javafx-plugin:0.0.10'
-    implementation("com.google.inject:guice:5.0.1") {
+    implementation('com.google.inject:guice:5.1.0') {
         exclude(module: 'guava')
     }
     implementation 'org.bitcoinj:bitcoinj-core:0.16.1'

@@ -1,7 +1,7 @@
-package com.jfxvalidation.controls;
+package com.xyzmaker123.jfxvalidation.controls;
 
 import java.util.Arrays;
-import com.jfxvalidation.core.Validator;
+import com.xyzmaker123.jfxvalidation.core.Validator;
 
 public class TextFieldWrapper extends BasicTextFieldWrapper {
     

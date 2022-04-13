@@ -1,8 +1,8 @@
-package com.jfxvalidation.converters;
+package com.xyzmaker123.jfxvalidation.converters;
 
 import javafx.util.StringConverter;
 import org.bitcoinj.core.Coin;
-import com.jfxvalidation.utils.ValidationUtils;
+import com.xyzmaker123.jfxvalidation.utils.ValidationUtils;
 
 public class StringCoinConverter extends StringConverter<Coin> {
     @Override
