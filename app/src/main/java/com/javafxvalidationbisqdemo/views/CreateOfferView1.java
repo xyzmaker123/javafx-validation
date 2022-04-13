@@ -2,19 +2,20 @@ package com.javafxvalidationbisqdemo.views;
 
 import com.javafxvalidation.controls.TextFieldWrapper;
 import com.javafxvalidation.converters.StringCoinConverter;
+import com.javafxvalidation.converters.StringNumberConverter;
 import com.javafxvalidation.utils.BindingUtils;
 import com.javafxvalidation.validators.CoinValidator;
 import com.javafxvalidation.validators.DoubleValidator;
 import com.javafxvalidation.validators.NotEmptyValidator;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 
-public class CreateOfferView1 extends VBox {
+public class CreateOfferView1 extends GridPane {
     private final CreateOfferModel model;
     private TextFieldWrapper amountBox, marketPricePercentageBox, volumeBox;
     private Button saveButton;
-
+    
     public CreateOfferView1() {
         super();
         model = new CreateOfferModel();
@@ -36,7 +37,7 @@ public class CreateOfferView1 extends VBox {
         );
 
         volumeBox = new TextFieldWrapper(
-                "Amount in EUR to spend",
+                "Amount in USD to spend",
                 NotEmptyValidator.getInstance(), 
                 DoubleValidator.getInstance()
         );
@@ -46,16 +47,22 @@ public class CreateOfferView1 extends VBox {
         saveButton.setOnAction(e -> {
             System.out.println(model.createOffer());
         });
+        
+        add(amountBox, 0, 0);
+        add(marketPricePercentageBox, 1, 0);
+        add(volumeBox, 2, 0);
+        
+        add(saveButton, 0, 1);
 
-        getChildren().addAll(amountBox, marketPricePercentageBox, volumeBox, saveButton);
-        setSpacing(20);
+        setHgap(10);
+        setVgap(10);
         setPadding(new Insets(10, 10, 10, 10));
     }
 
     private void addBindings() {
         amountBox.textProperty().bindBidirectional(model.amount, new StringCoinConverter());
-        marketPricePercentageBox.textProperty().bindBidirectional(model.marketPricePercentage);
-        volumeBox.textProperty().bindBidirectional(model.volume);
+        marketPricePercentageBox.textProperty().bindBidirectional(model.marketPricePercentage, new StringNumberConverter());
+        volumeBox.textProperty().bindBidirectional(model.volume, new StringNumberConverter());
 
         saveButton.disableProperty().bind(
                 BindingUtils.createAnyNotNullBinding(

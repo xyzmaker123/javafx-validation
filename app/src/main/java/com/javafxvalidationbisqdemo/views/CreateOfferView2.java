@@ -2,6 +2,7 @@ package com.javafxvalidationbisqdemo.views;
 
 import com.javafxvalidation.controls.BasicTextFieldWrapper;
 import com.javafxvalidation.converters.StringCoinConverter;
+import com.javafxvalidation.converters.StringNumberConverter;
 import com.javafxvalidation.utils.BindingUtils;
 import com.javafxvalidation.validators.CoinValidator;
 import com.javafxvalidation.validators.DoubleValidator;
@@ -32,7 +33,7 @@ public class CreateOfferView2 extends VBox {
     void initialize() {
         amountBox = new BasicTextFieldWrapper("Amount of BTC to buy");
         marketPricePercentageBox = new BasicTextFieldWrapper("Below % from market price");
-        volumeBox = new BasicTextFieldWrapper("Amount in EUR to spend");
+        volumeBox = new BasicTextFieldWrapper("Amount in USD to spend");
 
         saveButton = new Button("Next step");
         saveButton.setOnAction(e -> {
@@ -46,8 +47,8 @@ public class CreateOfferView2 extends VBox {
 
     private void addBindings() {
         amountBox.textProperty().bindBidirectional(model.amount, new StringCoinConverter());
-        marketPricePercentageBox.textProperty().bindBidirectional(model.marketPricePercentage);
-        volumeBox.textProperty().bindBidirectional(model.volume);
+        marketPricePercentageBox.textProperty().bindBidirectional(model.marketPricePercentage, new StringNumberConverter());
+        volumeBox.textProperty().bindBidirectional(model.volume, new StringNumberConverter());
         
         amountBox.errorProperty().bind(amountValidationResult);
         marketPricePercentageBox.errorProperty().bind(marketPricePercentageValidationResult);

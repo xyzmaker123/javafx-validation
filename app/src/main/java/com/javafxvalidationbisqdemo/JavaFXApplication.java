@@ -3,7 +3,7 @@
  */
 package com.javafxvalidationbisqdemo;
 
-import com.javafxvalidationbisqdemo.views.CreateOfferView2;
+import com.javafxvalidationbisqdemo.views.CreateOfferView1;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -25,6 +25,6 @@ public class JavaFXApplication extends Application {
     }
     
     private void initialize() {
-        root.getChildren().add(new CreateOfferView2());
+        root.getChildren().add(new CreateOfferView1());
     }
 }
